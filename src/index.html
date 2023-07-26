@@ -5,9 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homework 11</title>
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <script src="./js/index.js"></script>
+    <header class="header">
+      <form class="search-form" id="search-form">
+        <input
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Search images..."
+        />
+        <button type="submit">
+          <svg class="icon" width="15" height="15">
+            <use href="./images/icons.svg#icon-search"></use>
+          </svg>
+        </button>
+      </form>
+    </header>
+    <script type="module" src="./js/index.js"></script>
   </body>
 </html>

@@ -49,6 +49,7 @@ async function fetchData(info, page) {
                     },
                );
                hasMore = false;
+               isFetching = false;
           }
           else if (response.data.hits.length === 0) {
                Notiflix.Notify.warning(
@@ -59,6 +60,7 @@ async function fetchData(info, page) {
                     },
                );
                hasMore = false;
+               isFetching = false;
           }
           else {
                let markup = await renderData(response.data.hits);
@@ -79,11 +81,10 @@ async function fetchData(info, page) {
                hasMore = true;
                currentPage++;
                galleryLightbox.refresh();
-
           }
-
      } catch {
           hasMore = false;
+          isFetching = false;
           Notiflix.Notify.warning(
                `We're sorry, but you've reached the end of search results.`,
                {
@@ -128,7 +129,7 @@ function renderData(data) {
 }
 
 window.addEventListener('scroll', _.throttle(() => {
-     if (!isFetching || hasMore) {
+     if (!isFetching && hasMore) {
           if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
                fetchData(searchQuery.value, currentPage);
           }

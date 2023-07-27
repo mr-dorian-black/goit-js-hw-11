@@ -64,6 +64,13 @@ async function fetchData(info, page) {
                let markup = await renderData(response.data.hits);
                if (page === 1) {
                     gallery.innerHTML = markup;
+                    Notiflix.Notify.success(
+                         `Hooray! We found ${response.data.totalHits} images.`,
+                         {
+                              timeout: 4000,
+                              useIcon: true
+                         },
+                    );
                }
                else {
                     gallery.insertAdjacentHTML('beforeend', markup);
@@ -72,6 +79,7 @@ async function fetchData(info, page) {
                hasMore = true;
                currentPage++;
                galleryLightbox.refresh();
+
           }
 
      } catch {
@@ -121,7 +129,7 @@ function renderData(data) {
 
 window.addEventListener('scroll', _.throttle(() => {
      if (!isFetching || hasMore) {
-          if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+          if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
                fetchData(searchQuery.value, currentPage);
           }
      }

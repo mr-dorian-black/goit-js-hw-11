@@ -10,6 +10,7 @@ export const searchInfo = (info, page) => {
           image_type: 'photo',
           orientation: 'horizontal',
           safesearch: true,
+          per_page: 40,
           page: page
      });
      return axios.get(`https://pixabay.com/api?${params.toString()}`)

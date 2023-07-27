@@ -12,16 +12,19 @@ export const searchInfo = (info, page) => {
           per_page: 40,
           page: page
      });
-     return axios.get(`https://pixabay.com/api?${params.toString()}`)
-          .then((response) => {
-               if (!response.data) {
-                    new Error(response.status);
-               }
-               else {
-                    return response;
-               }
-          }).catch(error => {
-               console.log(error);
-          })
+     return axios({
+          method: 'get',
+          baseURL: 'https://pixabay.com/api',
+          url: `?${params.toString()}`
+     }).then((response) => {
+          if (!response.data) {
+               new Error(response.status);
+          }
+          else {
+               return response;
+          }
+     }).catch(error => {
+          console.log(error);
+     })
 }
 

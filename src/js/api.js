@@ -6,16 +6,24 @@ const headers = new Headers({
      'Content-Type': 'application/json',
 })
 
-export const searchInfo = (info) => {
+export const searchInfo = (info, page) => {
      const params = new URLSearchParams({
           key: key,
           q: info,
           image_type: 'photo',
           orientation: 'horizontal',
-          safesearch: true
+          safesearch: true,
+          page: page
      });
      return axios.get(`https://pixabay.com/api?${params.toString()}`)
-          .then(data => ({ ok: true, data }))
-          .catch(error => Promise.resolve({ ok: false, error }));
+          .then((response) => {
+               console.log(response);
+               if (!response.data) {
+                    new Error(response.status);
+               }
+               else {
+                    return response;
+               }
+          })
 }
 

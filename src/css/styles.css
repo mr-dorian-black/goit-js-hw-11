@@ -98,9 +98,12 @@ img {
   margin: 0;
 }
 
+.gallery-item {
+  width: calc((100% - (20px * 3)) / 4);
+}
+
 .gallery-item .link {
   display: block;
-  width: calc((100% - (20px * 3)) / 4);
   border: none;
   box-shadow: 0 0 2px 1px #2b2d4244;
   border-radius: 4px;
@@ -108,8 +111,8 @@ img {
   background-color: white;
 }
 
-.gallery-item:is(:hover, :focus) {
-  transform: scale(1.15);
+.gallery-item .link:is(:hover, :focus) {
+  transform: scale(1.1);
   box-shadow: 0 0 10px 5px #2b2d4244;
   z-index: 2;
 }

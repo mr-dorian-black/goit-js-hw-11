@@ -1,10 +1,7 @@
 import axios from "axios";
+import Notiflix from 'notiflix';
+import _ from 'lodash'
 const key = '38484298-a4f98b849ca0293483b2c27a9'
-
-const headers = new Headers({
-     'Access-Control-Allow-Origin': '*',
-     'Content-Type': 'application/json',
-})
 
 export const searchInfo = (info, page) => {
      const params = new URLSearchParams({
@@ -17,13 +14,14 @@ export const searchInfo = (info, page) => {
      });
      return axios.get(`https://pixabay.com/api?${params.toString()}`)
           .then((response) => {
-               console.log(response);
                if (!response.data) {
                     new Error(response.status);
                }
                else {
                     return response;
                }
+          }).catch(error => {
+               console.log(error);
           })
 }
 

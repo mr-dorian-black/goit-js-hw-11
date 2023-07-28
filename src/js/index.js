@@ -23,7 +23,7 @@ let options = {
 let galleryLightbox = new SimpleLightbox('.gallery a', options);
 
 
-form.addEventListener('submit', async (event) => {
+form.addEventListener('submit', (event) => {
      event.preventDefault();
      currentPage = 1;
      hasMore = true;
@@ -32,7 +32,7 @@ form.addEventListener('submit', async (event) => {
           left: 0,
           behavior: "smooth",
      });
-     await fetchData(searchQuery.value, currentPage);
+     fetchData(searchQuery.value, currentPage);
 });
 
 async function fetchData(info, page) {

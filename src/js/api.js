@@ -28,31 +28,3 @@ export const searchInfo = (info, page) => {
 }
 
 
-
-// export const searchInfo = (info, page) => {
-//      const params = new URLSearchParams({
-//           key: key,
-//           q: info,
-//           image_type: 'photo',
-//           orientation: 'horizontal',
-//           safesearch: true,
-//           per_page: 40,
-//           page: page
-//      });
-//      return axios({
-//           method: 'get',
-//           baseURL: 'https://pixabay.com/api',
-//           url: `?${params.toString()}`
-//      }).then((response) => {
-//           if (!response.data) {
-//                new Error(response.status);
-//           }
-//           else {
-//                return response;
-//           }
-//      }).catch(error => {
-//           console.log(error);
-//      })
-// }
-
-
